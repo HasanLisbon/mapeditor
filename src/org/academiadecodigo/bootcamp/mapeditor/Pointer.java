@@ -59,6 +59,11 @@ public class Pointer  extends Cell implements KeyboardHandler {
         eventDown.setKey(KeyboardEvent.KEY_DOWN);
         eventDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(eventDown);
+
+        KeyboardEvent eventPaint=new KeyboardEvent();
+        eventPaint.setKey(KeyboardEvent.KEY_SPACE);
+        eventPaint.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(eventPaint);
     }
 
     @Override
@@ -72,25 +77,33 @@ public class Pointer  extends Cell implements KeyboardHandler {
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
         if(keyboardEvent.getKey()== KeyboardEvent.KEY_LEFT){
-            if(rectangle.getX()>0) {
+            if(getCol()>0) {
                 moveLeft();
+                setCol(getCol()-1);
             }
         }
 
         if(keyboardEvent.getKey()==KeyboardEvent.KEY_RIGHT){
-            if(rectangle.getX()<Grid.getCols()-CELL_SIZE) {
+            if(Grid.getCols()<Grid.getCols()) {
                 moveRight();
+                setCol(getCol()+1);
             }
         }
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_UP){
-            if(rectangle.getY()>0) {
+            if(Grid.getRows()>0) {
                 moveUp();
+                setRow(getRow()-1);
             }
         }
         if(keyboardEvent.getKey()== KeyboardEvent.KEY_DOWN){
-            if(rectangle.getY()<Grid.getRows()-CELL_SIZE) {
+            if(Grid.getRows()<Grid.getRows()) {
                 moveDown();
+                setRow(getRow()+1);
             }
+        }
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE){
+            Grid.getCells(getCol(),getRow()).paint();
+            System.out.println("Col "+ getCol()+ " Row "+ getRow());
         }
     }
 

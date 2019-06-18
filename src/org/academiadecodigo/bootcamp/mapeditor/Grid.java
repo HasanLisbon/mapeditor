@@ -4,9 +4,9 @@ import java.awt.*;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class Grid {
-    private  int cols;
-    private  int rows;
-    Cell[][] cells;
+    private  static int cols;
+    private  static int rows;
+    private static Cell[][] cells;
     private static Rectangle canvas;
 
     public Grid(int cols, int rows){
@@ -14,7 +14,7 @@ public class Grid {
         this.rows=rows;
         cells=new Cell[cols][rows];
 
-        canvas= new Rectangle(0,0, cols*Cell.CELL_SIZE,rows*Cell.CELL_SIZE);
+        canvas= new Rectangle(0,0, cols,rows);
         canvas.draw();
         createGrid();
     }
@@ -29,11 +29,22 @@ public class Grid {
 
     }
 
+    public static Cell getCells(int col, int row){
+        return cells[col][row];
+    }
     public static int getCols() {
-        return canvas.getWidth();
+        return this.cols;
     }
 
-    public static int getRows() {
-        return canvas.getHeight();
+    public static int getRows () {
+        return this.rows;
     }
+    public static void setRow(int n){
+        cols=n;
+    }
+
+    public static void setCol(int n){
+        cols=n;
+    }
+
 }
