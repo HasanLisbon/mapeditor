@@ -8,7 +8,7 @@ public class Cell {
     public static final int CELL_SIZE=30;
     private int col;
     private int row;
-    private Rectangle rectangle;
+    protected Rectangle rectangle;
 
     public Cell(int col, int row){
        this.col=col;
@@ -26,7 +26,7 @@ public class Cell {
     }
 
     public void paint(){
-
+        rectangle.fill();
     }
 
     public int getCol() {
@@ -35,5 +35,9 @@ public class Cell {
 
     public int getRow() {
         return row;
+    }
+
+    public void setRow(int n){
+        col=col+n;
     }
 }

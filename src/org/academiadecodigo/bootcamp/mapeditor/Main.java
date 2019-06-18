@@ -1,9 +1,5 @@
 package org.academiadecodigo.bootcamp.mapeditor;
 
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-
-import java.awt.*;
-
 public class Main {
     public static void main(String[] args) {
         /*Rectangle rectangle= new Rectangle(0,0,30,30);
@@ -16,8 +12,10 @@ public class Main {
             pos+=10;
         }*/
 
-        Grid grid=new Grid(50,50);
+        Grid grid=new Grid(10,10);
         grid.createGrid();
-        Pointer pointer=new Pointer(0, 0);
+        Pointer pointer=new Pointer();
+        System.out.println(pointer.getCol());
+
     }
 }
