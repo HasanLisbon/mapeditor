@@ -8,7 +8,6 @@ public class Grid {
     private  static int rows;
     private static Cell[][] cells;
     private static Rectangle canvas;
-    private static String cellsBin;
 
     public Grid(int cols, int rows){
         this.cols=cols;
@@ -31,14 +30,16 @@ public class Grid {
     }
 
    public static String getCellsBin(){
-        for(int col=0; col<cols; col++){
-            for(int row=0; row<rows; row++){
+        String cellsBin="";
+        for(int row=0; row<rows; row++){
+            for(int col=0; col<cols; col++){
                 if(cells[col][row].isPainted()){
                     cellsBin+=1;
                 }else{
                     cellsBin+=0;
                 }
             }
+            cellsBin+="\n";
         }
         return cellsBin;
    }
