@@ -65,6 +65,11 @@ public class Pointer  extends Cell implements KeyboardHandler {
         eventPaint.setKey(KeyboardEvent.KEY_SPACE);
         eventPaint.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(eventPaint);
+
+        KeyboardEvent eventErase= new KeyboardEvent();
+        eventErase.setKey(KeyboardEvent.KEY_D);
+        eventErase.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(eventErase);
     }
 
     @Override
@@ -99,16 +104,13 @@ public class Pointer  extends Cell implements KeyboardHandler {
             }
         }
         if(keyboardEvent.getKey()== KeyboardEvent.KEY_SPACE){
-            if(paint==true) {
                 Grid.getCells(rectangle.getX() / CELL_SIZE, rectangle.getY() / CELL_SIZE).paint();
-                paint = false;
                 return;
-            }
-            if(paint==false){
-            Grid.getCells(rectangle.getX()/CELL_SIZE,rectangle.getY()/CELL_SIZE).erase();
-            paint=true;
-            return;
-            }
+        }
+
+        if(keyboardEvent.getKey()==KeyboardEvent.KEY_D){
+                Grid.getCells(rectangle.getX() / CELL_SIZE, rectangle.getY() / CELL_SIZE).show();
+                return;
         }
 
     }
