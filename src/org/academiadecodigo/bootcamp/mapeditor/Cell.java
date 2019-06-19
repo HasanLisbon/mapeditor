@@ -29,6 +29,9 @@ public class Cell {
         rectangle.fill();
     }
 
+    public void erase(){
+        rectangle.delete();
+    }
     public int getCol() {
         return col;
     }

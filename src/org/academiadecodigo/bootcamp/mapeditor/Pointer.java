@@ -11,6 +11,7 @@ public class Pointer  extends Cell implements KeyboardHandler {
     private int row=getRow();
     private int newCol;
     private int newRow;
+    private boolean paint=true;
     Grid grid;
     public Pointer() {
         super(0, 0);
@@ -98,8 +99,18 @@ public class Pointer  extends Cell implements KeyboardHandler {
             }
         }
         if(keyboardEvent.getKey()== KeyboardEvent.KEY_SPACE){
-           Grid.getCells(rectangle.getX()/CELL_SIZE,rectangle.getY()/CELL_SIZE).paint();
+            if(paint==true) {
+                Grid.getCells(rectangle.getX() / CELL_SIZE, rectangle.getY() / CELL_SIZE).paint();
+                paint = false;
+                return;
+            }
+            if(paint==false){
+            Grid.getCells(rectangle.getX()/CELL_SIZE,rectangle.getY()/CELL_SIZE).erase();
+            paint=true;
+            return;
+            }
         }
+
     }
 
     @Override
