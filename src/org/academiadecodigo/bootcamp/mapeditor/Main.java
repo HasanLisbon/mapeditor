@@ -16,12 +16,11 @@ public class Main {
 
         Grid grid=new Grid(20,20);
         Pointer pointer=new Pointer();
-        System.out.println(pointer.getCol());
 
         FileManager fileManager=new FileManager();
         fileManager.save(Grid.getCellsBin());
 
-
+        System.out.println(FileManager.load());
 
     }
 }

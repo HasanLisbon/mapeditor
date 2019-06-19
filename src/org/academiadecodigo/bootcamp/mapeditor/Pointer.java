@@ -123,6 +123,7 @@ public class Pointer  extends Cell implements KeyboardHandler {
         if(keyboardEvent.getKey()==KeyboardEvent.KEY_S){
            FileManager.save(Grid.getCellsBin());
             System.out.println("Saving file");
+            FileManager.load();
         }
 
     }

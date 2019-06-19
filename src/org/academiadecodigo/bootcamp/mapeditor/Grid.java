@@ -34,9 +34,9 @@ public class Grid {
         for(int row=0; row<rows; row++){
             for(int col=0; col<cols; col++){
                 if(cells[col][row].isPainted()){
-                    cellsBin+=1;
+                    cellsBin+='1';
                 }else{
-                    cellsBin+=0;
+                    cellsBin+='0';
                 }
             }
             cellsBin+="\n";
