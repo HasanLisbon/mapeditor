@@ -18,6 +18,9 @@ public class Main {
         Pointer pointer=new Pointer();
         System.out.println(pointer.getCol());
 
+        FileManager fileManager=new FileManager();
+        fileManager.save(Grid.getCellsBin());
+
 
 
     }
