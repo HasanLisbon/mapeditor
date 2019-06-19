@@ -11,6 +11,7 @@ public class Pointer  extends Cell implements KeyboardHandler {
     private int row=getRow();
     private int newCol;
     private int newRow;
+    private boolean paint=true;
     Grid grid;
     public Pointer() {
         super(0, 0);
@@ -60,10 +61,15 @@ public class Pointer  extends Cell implements KeyboardHandler {
         eventDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(eventDown);
 
-        KeyboardEvent eventPaint=new KeyboardEvent();
+        KeyboardEvent eventPaint= new KeyboardEvent();
         eventPaint.setKey(KeyboardEvent.KEY_SPACE);
         eventPaint.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(eventPaint);
+
+        KeyboardEvent eventErase= new KeyboardEvent();
+        eventErase.setKey(KeyboardEvent.KEY_D);
+        eventErase.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(eventErase);
     }
 
     @Override
@@ -77,34 +83,36 @@ public class Pointer  extends Cell implements KeyboardHandler {
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
         if(keyboardEvent.getKey()== KeyboardEvent.KEY_LEFT){
-            if(getCol()>0) {
+            if(rectangle.getX()>0) {
                 moveLeft();
-                setCol(getCol()-1);
             }
         }
 
         if(keyboardEvent.getKey()==KeyboardEvent.KEY_RIGHT){
-            if(Grid.getCols()<Grid.getCols()) {
+            if(rectangle.getX()<Grid.getCols()-CELL_SIZE) {
                 moveRight();
-                setCol(getCol()+1);
             }
         }
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_UP){
-            if(Grid.getRows()>0) {
+            if(rectangle.getY()>0) {
                 moveUp();
-                setRow(getRow()-1);
             }
         }
         if(keyboardEvent.getKey()== KeyboardEvent.KEY_DOWN){
-            if(Grid.getRows()<Grid.getRows()) {
+            if(rectangle.getY()<Grid.getRows()-CELL_SIZE) {
                 moveDown();
-                setRow(getRow()+1);
             }
         }
-        if(keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE){
-            Grid.getCells(getCol(),getRow()).paint();
-            System.out.println("Col "+ getCol()+ " Row "+ getRow());
+        if(keyboardEvent.getKey()== KeyboardEvent.KEY_SPACE){
+                Grid.getCells(rectangle.getX() / CELL_SIZE, rectangle.getY() / CELL_SIZE).paint();
+                return;
         }
+
+        if(keyboardEvent.getKey()==KeyboardEvent.KEY_D){
+                Grid.getCells(rectangle.getX() / CELL_SIZE, rectangle.getY() / CELL_SIZE).show();
+                return;
+        }
+
     }
 
     @Override

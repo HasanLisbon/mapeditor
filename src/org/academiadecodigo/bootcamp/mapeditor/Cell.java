@@ -1,6 +1,5 @@
 package org.academiadecodigo.bootcamp.mapeditor;
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 import java.awt.*;
@@ -10,7 +9,6 @@ public class Cell {
     private int col;
     private int row;
     protected Rectangle rectangle;
-    protected Rectangle blackRect;
 
     public Cell(int col, int row){
        this.col=col;
@@ -23,22 +21,17 @@ public class Cell {
         rectangle.draw();
     }
 
-    public void hide(){
-        rectangle.delete();
-    }
-
     public Rectangle getRectangle() {
         return rectangle;
     }
 
     public void paint(){
-        rectangle.setColor(Color.BLACK);
         rectangle.fill();
-        System.out.println("Paint");
     }
 
-
-
+    public void erase(){
+        rectangle.delete();
+    }
     public int getCol() {
         return col;
     }
@@ -48,10 +41,6 @@ public class Cell {
     }
 
     public void setRow(int n){
-        this.row=n;
-    }
-
-    public void setCol(int n){
-        this.col=n;
+        col=col+n;
     }
 }
