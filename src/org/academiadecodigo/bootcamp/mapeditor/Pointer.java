@@ -59,6 +59,11 @@ public class Pointer  extends Cell implements KeyboardHandler {
         eventDown.setKey(KeyboardEvent.KEY_DOWN);
         eventDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(eventDown);
+
+        KeyboardEvent eventPaint= new KeyboardEvent();
+        eventPaint.setKey(KeyboardEvent.KEY_SPACE);
+        eventPaint.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(eventPaint);
     }
 
     @Override
@@ -91,6 +96,9 @@ public class Pointer  extends Cell implements KeyboardHandler {
             if(rectangle.getY()<Grid.getRows()-CELL_SIZE) {
                 moveDown();
             }
+        }
+        if(keyboardEvent.getKey()== KeyboardEvent.KEY_SPACE){
+           Grid.getCells(rectangle.getX()/CELL_SIZE,rectangle.getY()/CELL_SIZE).paint();
         }
     }
 

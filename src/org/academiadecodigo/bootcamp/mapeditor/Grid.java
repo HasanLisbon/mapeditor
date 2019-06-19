@@ -6,7 +6,7 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 public class Grid {
     private  int cols;
     private  int rows;
-    Cell[][] cells;
+    private static Cell[][] cells;
     private static Rectangle canvas;
 
     public Grid(int cols, int rows){
@@ -28,7 +28,9 @@ public class Grid {
        }
 
     }
-
+    public static Cell getCells(int col, int row){
+        return cells[col][row];
+    }
     public static int getCols() {
         return canvas.getWidth();
     }
