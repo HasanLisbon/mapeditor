@@ -21,7 +21,7 @@ public class Pointer  extends Cell implements KeyboardHandler {
 
     public void moveUp(){
 
-            rectangle.translate(getCol(), CELL_SIZE*-1);
+            rectangle.translate(getCol(), -CELL_SIZE);
         System.out.println("Rectangle x"+ rectangle.getX()+ " Rectangle y "+ rectangle.getY());
     }
     public void moveDown(){
@@ -35,7 +35,7 @@ public class Pointer  extends Cell implements KeyboardHandler {
     }
 
     public void moveLeft(){
-            rectangle.translate(-1* CELL_SIZE, row);
+            rectangle.translate(-CELL_SIZE, row);
         System.out.println("Rectangle x"+ rectangle.getX()+ " Rectangle y "+ rectangle.getY());
     }
     public void keyMove(){
@@ -112,7 +112,7 @@ public class Pointer  extends Cell implements KeyboardHandler {
         if(keyboardEvent.getKey()==KeyboardEvent.KEY_D){
                 Grid.getCells(rectangle.getX() / CELL_SIZE, rectangle.getY() / CELL_SIZE).show();
             Grid.getCells(rectangle.getX() / CELL_SIZE, rectangle.getY() / CELL_SIZE).setPainted(false);
-            System.out.println(Grid.getCellsBin());
+
                 return;
         }
 
