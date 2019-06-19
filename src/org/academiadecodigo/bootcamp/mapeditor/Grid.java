@@ -33,11 +33,11 @@ public class Grid {
         return cells[col][row];
     }
     public static int getCols() {
-        return this.cols;
+        return cols;
     }
 
     public static int getRows () {
-        return this.rows;
+        return rows;
     }
     public static void setRow(int n){
         cols=n;
