@@ -9,6 +9,7 @@ public class Cell {
     private int col;
     private int row;
     protected Rectangle rectangle;
+    private boolean painted;
 
     public Cell(int col, int row){
        this.col=col;
@@ -42,5 +43,13 @@ public class Cell {
 
     public void setRow(int n){
         col=col+n;
+    }
+
+    public boolean isPainted() {
+        return painted;
+    }
+
+    public void setPainted(boolean painted) {
+        this.painted = painted;
     }
 }

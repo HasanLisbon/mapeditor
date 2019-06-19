@@ -105,11 +105,14 @@ public class Pointer  extends Cell implements KeyboardHandler {
         }
         if(keyboardEvent.getKey()== KeyboardEvent.KEY_SPACE){
                 Grid.getCells(rectangle.getX() / CELL_SIZE, rectangle.getY() / CELL_SIZE).paint();
+            Grid.getCells(rectangle.getX() / CELL_SIZE, rectangle.getY() / CELL_SIZE).setPainted(true);
                 return;
         }
 
         if(keyboardEvent.getKey()==KeyboardEvent.KEY_D){
                 Grid.getCells(rectangle.getX() / CELL_SIZE, rectangle.getY() / CELL_SIZE).show();
+            Grid.getCells(rectangle.getX() / CELL_SIZE, rectangle.getY() / CELL_SIZE).setPainted(false);
+            System.out.println(Grid.getCellsBin());
                 return;
         }
 

@@ -1,5 +1,7 @@
 package org.academiadecodigo.bootcamp.mapeditor;
 
+import java.io.FileWriter;
+
 public class Main {
     public static void main(String[] args) {
         /*Rectangle rectangle= new Rectangle(0,0,30,30);
@@ -15,6 +17,8 @@ public class Main {
         Grid grid=new Grid(40,40);
         Pointer pointer=new Pointer();
         System.out.println(pointer.getCol());
+
+
 
     }
 }
