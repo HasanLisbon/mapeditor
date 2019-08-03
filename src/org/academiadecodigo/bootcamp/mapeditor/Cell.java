@@ -5,7 +5,7 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import java.awt.*;
 
 public class Cell {
-    public static final int CELL_SIZE=30;
+    public static final int CELL_SIZE=10;
     private int col;
     private int row;
     protected Rectangle rectangle;
@@ -27,11 +27,11 @@ public class Cell {
     }
 
     public void paint(){
-        rectangle.fill();
+            rectangle.fill();
     }
 
     public void erase(){
-        rectangle.delete();
+        rectangle.draw();
     }
     public int getCol() {
         return col;

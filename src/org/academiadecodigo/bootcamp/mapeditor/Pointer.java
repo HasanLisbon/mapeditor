@@ -21,7 +21,7 @@ public class Pointer  extends Cell implements KeyboardHandler {
 
     public void moveUp(){
 
-            rectangle.translate(getCol(), CELL_SIZE*-1);
+            rectangle.translate(getCol(), -CELL_SIZE);
         System.out.println("Rectangle x"+ rectangle.getX()+ " Rectangle y "+ rectangle.getY());
     }
     public void moveDown(){
@@ -35,9 +35,11 @@ public class Pointer  extends Cell implements KeyboardHandler {
     }
 
     public void moveLeft(){
-            rectangle.translate(-1* CELL_SIZE, row);
+            rectangle.translate(-CELL_SIZE, row);
         System.out.println("Rectangle x"+ rectangle.getX()+ " Rectangle y "+ rectangle.getY());
     }
+
+
     public void keyMove(){
         Keyboard keyboard= new Keyboard(this);
         KeyboardEvent eventLeft= new KeyboardEvent();
@@ -70,6 +72,18 @@ public class Pointer  extends Cell implements KeyboardHandler {
         eventErase.setKey(KeyboardEvent.KEY_D);
         eventErase.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(eventErase);
+
+        KeyboardEvent eventSave= new KeyboardEvent();
+        eventSave.setKey(KeyboardEvent.KEY_S);
+        eventSave.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(eventSave);
+
+
+        KeyboardEvent eventLoad= new KeyboardEvent();
+        eventLoad.setKey(KeyboardEvent.KEY_L);
+        eventLoad.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(eventLoad);
+
     }
 
     @Override
@@ -106,14 +120,22 @@ public class Pointer  extends Cell implements KeyboardHandler {
         if(keyboardEvent.getKey()== KeyboardEvent.KEY_SPACE){
                 Grid.getCells(rectangle.getX() / CELL_SIZE, rectangle.getY() / CELL_SIZE).paint();
             Grid.getCells(rectangle.getX() / CELL_SIZE, rectangle.getY() / CELL_SIZE).setPainted(true);
-                return;
+
         }
 
         if(keyboardEvent.getKey()==KeyboardEvent.KEY_D){
                 Grid.getCells(rectangle.getX() / CELL_SIZE, rectangle.getY() / CELL_SIZE).show();
             Grid.getCells(rectangle.getX() / CELL_SIZE, rectangle.getY() / CELL_SIZE).setPainted(false);
-            System.out.println(Grid.getCellsBin());
-                return;
+
+        }
+
+        if(keyboardEvent.getKey()==KeyboardEvent.KEY_S){
+           FileManager.save(Grid.getCellsBin());
+            System.out.println("Saving file");
+        }
+
+        if(keyboardEvent.getKey()==KeyboardEvent.KEY_L){
+            Grid.loadGrid();
         }
 
     }

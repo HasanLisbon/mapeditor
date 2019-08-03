@@ -14,9 +14,8 @@ public class Main {
             pos+=10;
         }*/
 
-        Grid grid=new Grid(20,20);
+        Grid grid=new Grid(40,40);
         Pointer pointer=new Pointer();
-        System.out.println(pointer.getCol());
 
 
 
